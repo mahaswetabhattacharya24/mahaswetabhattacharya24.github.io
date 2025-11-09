@@ -3,6 +3,15 @@ layout: default
 title: Home
 ---
 
+<div class="nav-buttons">
+  <a href="/about/">About</a>
+  <a href="/projects/">Projects</a>
+  <a href="/publications/">Publications</a>
+  <a href="/talks/">Talks</a>
+  <a href="/news/">News</a>
+  <a href="/contact/">Contact</a>
+</div>
+
 <img src="assets/picture.jpg" alt="Mahasweta Bhattacharya" width="350" style="border-radius:12px;margin-bottom:12px;">
 
 ### About Me
