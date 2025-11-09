@@ -10,5 +10,12 @@ I am a Senior Scientist at Sanofi in Cambridge, MA, where I develop AI-driven, m
 
 ---
 
+### 📄 Resume
+You can download my latest resume here:
+
+👉 **[Download Resume (PDF)](/assets/resume/Mahasweta_Bhattacharya_Resume.pdf){:target="_blank"}**
+
+---
+
 **Navigate:**  
 [About](/about/) • [Projects](/projects/) • [Publications](/publications/) • [Talks](/talks/) • [News](/news/) • [Contact](/contact/)
