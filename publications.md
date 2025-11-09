@@ -23,40 +23,40 @@ Hrinivich, W.T., *et al.*
 Meamardoost, S., *et al.*  
 *Rewiring dynamics of functional connectomes during motor-skill learning.*  
 **Data Science in Science**, 2(1): 2260431, 2023.  
-🔗 [Journal](https://www.sciencedirect.com/journal/data-science-in-science)  
+🔗 [Journal](https://www.tandfonline.com/doi/full/10.1080/26941899.2023.2260431)  
 <a href="/assets/papers/meamardoost_2023_rewiring.pdf" target="_blank" title="Download PDF"><img src="/assets/icons/pdf.svg" alt="PDF" style="width:14px; vertical-align:middle;"></a>
 
 ### 2021
 Meamardoost, S., *et al.*  
 *FARCI: Fast and robust connectome inference.*  
 **Brain Sciences**, 11(12): 1556, 2021.  
-🔗 [Journal](https://www.mdpi.com/journal/brainsci)  
+🔗 [Journal](https://www.mdpi.com/2076-3425/11/12/1556)  
 <a href="/assets/papers/farci_2021.pdf" target="_blank" title="Download PDF"><img src="/assets/icons/pdf.svg" alt="PDF" style="width:14px; vertical-align:middle;"></a>
 
 Othman, M.H., *et al.*  
 *Resting-state NIRS–EEG in unresponsive patients with acute brain injury.*  
 **Neurocritical Care**, 34(1): 31–44, 2021.  
-🔗 [Journal](https://link.springer.com/journal/12028)  
+🔗 [Journal](https://link.springer.com/article/10.1007/s12028-020-00971-x)  
 <a href="/assets/papers/othman_2021_nirs_eeg.pdf" target="_blank" title="Download PDF"><img src="/assets/icons/pdf.svg" alt="PDF" style="width:14px; vertical-align:middle;"></a>
 
 Rezaee, Z., *et al.*  
-*Combining fNIRS and EEG to identify chronic stroke responders to cerebellar tDCS.*  
+*Feasibility of combining functional near-infrared spectroscopy with electroencephalography to identify chronic stroke responders to cerebellar transcranial direct current stimulation—a computational modeling and portable neuroimaging methodological study*  
 **The Cerebellum**, 20(6): 853–871, 2021.  
-🔗 [Journal](https://link.springer.com/journal/12311)  
+🔗 [Journal](https://link.springer.com/article/10.1007/s12311-021-01249-4)  
 <a href="/assets/papers/rezaee_2021_fnirs_eeg.pdf" target="_blank" title="Download PDF"><img src="/assets/icons/pdf.svg" alt="PDF" style="width:14px; vertical-align:middle;"></a>
 
 ### 2020
 Dutta, A., *et al.*  
-*A proof-of-concept “Phase Zero” study of neurodevelopment using brain organoid models.*  
+*A proof of concept ‘phase zero’ study of neurodevelopment using brain organoid models with Vis/near-infrared spectroscopy and electrophysiology*  
 **Scientific Reports**, 10: 20987, 2020.  
-🔗 [Journal](https://www.nature.com/srep)  
+🔗 [Journal](https://www.nature.com/articles/s41598-020-77929-8)  
 <a href="/assets/papers/dutta_2020_phase_zero.pdf" target="_blank" title="Download PDF"><img src="/assets/icons/pdf.svg" alt="PDF" style="width:14px; vertical-align:middle;"></a>
 
 ### 2019
 **Bhattacharya, M.**, & Dutta, A.  
-*Computational modeling of photon transport and CCO absorption during NIR stimulation.*  
+*Computational Modeling of the Photon Transport, Tissue Heating, and Cytochrome C Oxidase Absorption during Transcranial Near-Infrared Stimulation*  
 **Brain Sciences**, 9(8): 179, 2019.  
-🔗 [Journal](https://www.mdpi.com/journal/brainsci)  
+🔗 [Journal](https://www.mdpi.com/2076-3425/9/8/179)  
 <a href="/assets/papers/bhattacharya_2019_brainsci.pdf" target="_blank" title="Download PDF"><img src="/assets/icons/pdf.svg" alt="PDF" style="width:14px; vertical-align:middle;"></a>
 
 ---
