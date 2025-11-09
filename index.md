@@ -4,7 +4,7 @@ title: Home
 ---
 
 <div style="text-align:center;">
-  <img src="/assets/me.jpg" alt="Mahasweta Bhattacharya" width="420" style="border-radius:12px; margin-bottom:16px;">
+  <img src="/assets/me.jpg" alt="Mahasweta Bhattacharya" width="350" style="border-radius:12px; margin-bottom:16px;">
 </div>
 
 ### About Me
