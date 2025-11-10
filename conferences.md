@@ -5,7 +5,7 @@ permalink: /conferences/
 ---
 
 ## 2025
-- **HubXChange: AI in Drug Discovery** — Boston, MA — *Presenter / Speaker*  
+- **HubXChange: AI in Drug Discovery** — Boston, MA — *Panelist/Speaker*  
   *AI-driven target discovery and multimodal evidence synthesis.*
 
 - **ISMB / ECCB** — Liverpool, UK — *Co-author*  
