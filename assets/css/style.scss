@@ -2,17 +2,17 @@
 ---
 @import "{{ site.theme }}";
 
-/* Button-style navigation (modern + clean) */
+/* Bottom nav buttons */
 .nav-buttons {
-  display: flex;
+  display: flex;            /* ensure side-by-side */
   flex-wrap: wrap;
   justify-content: center;
-  gap: 12px;          /* consistent spacing */
+  gap: 12px;                /* modern spacing instead of margin hacks */
   margin: 25px 0;
 }
 
 .nav-buttons a {
-  display: inline-flex;    /* centers text nicely */
+  display: inline-flex;     /* plays nicely with flex container */
   align-items: center;
   padding: 8px 18px;
   border: 1px solid #0366d6;
@@ -30,14 +30,6 @@
   border-color: #0366d6;
 }
 
-/* Project Cards Layout */
-
-.projects-container {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.2rem;
-  margin-top: 1.5rem;
-}
 
 @media (min-width: 750px) {
   .projects-container {
