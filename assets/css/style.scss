@@ -4,15 +4,17 @@
 
 /* Button-style navigation (modern + clean) */
 .nav-buttons {
-  text-align: center;
-  margin-top: 25px;
-  margin-bottom: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;          /* consistent spacing */
+  margin: 25px 0;
 }
 
 .nav-buttons a {
-  display: inline-block;
+  display: inline-flex;    /* centers text nicely */
+  align-items: center;
   padding: 8px 18px;
-  margin: 6px;
   border: 1px solid #0366d6;
   border-radius: 6px;
   text-decoration: none;
@@ -24,7 +26,7 @@
 
 .nav-buttons a:hover {
   background-color: #0366d6;
-  color: white;
+  color: #fff;
   border-color: #0366d6;
 }
 

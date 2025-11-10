@@ -16,12 +16,13 @@ I am a Senior Scientist at Sanofi in Cambridge, MA, where I develop AI-driven, m
 ---
 
 <div class="nav-buttons">
-<a href="/about/">About</a><!--
---><a href="/projects/">Projects</a><!--
---><a href="/publications/">Publications</a><!--
---><a href="/conferences/">Conferences</a><!--
---><a href="/news/">News</a><!--
---><a href="/contact/">Contact</a>
+  <a href="/about/">About</a>
+  <a href="/projects/">Projects</a>
+  <a href="/publications/">Publications</a>
+  <a href="/conferences/">Conferences</a>
+  <a href="/news/">News</a>
+  <a href="/contact/">Contact</a>
 </div>
+
 
 
