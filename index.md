@@ -19,7 +19,7 @@ I am a Senior Scientist at Sanofi in Cambridge, MA, where I develop AI-driven, m
 <a href="/about/">About</a><!--
 --><a href="/projects/">Projects</a><!--
 --><a href="/publications/">Publications</a><!--
---><a href="/talks/">Conferences</a><!--
+--><a href="/conferences/">Conferences</a><!--
 --><a href="/news/">News</a><!--
 --><a href="/contact/">Contact</a>
 </div>
