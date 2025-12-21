@@ -5,8 +5,8 @@ permalink: /news/
 
 ## Recent Updates
 
-### December 2024
-**December 3, 2024** - Elevated to **IEEE Senior Membership**  
+### 2025
+**December 3, 2025** - Elevated to **IEEE Senior Membership**  
 I am honored to be elevated to IEEE Senior Member, recognizing my professional accomplishments and contributions to the field of engineering and technology.
 
 ---
