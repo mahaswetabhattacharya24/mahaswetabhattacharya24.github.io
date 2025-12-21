@@ -81,3 +81,14 @@ Anirban Dutta, Sneha Sudhakar Karanth, **Mahasweta Bhattacharya**, Michal Liput,
 
 ### Google Scholar
 🔗 <https://scholar.google.com/citations?hl=en&user=2x5xWV8AAAAJ&view_op=list_works&sortby=pubdate>
+
+---
+
+<div class="nav-buttons">
+  <a href="/">Home</a>
+  <a href="/about/">About</a>
+  <a href="/projects/">Projects</a>
+  <a href="/conferences/">Conferences</a>
+  <a href="/news/">News</a>
+  <a href="/contact/">Contact</a>
+</div>

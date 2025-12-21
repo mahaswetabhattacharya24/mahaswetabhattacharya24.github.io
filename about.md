@@ -40,3 +40,14 @@ I am passionate about integrating human biology with data science, and I enjoy w
 
 ### Peer Review & Scientific Service
 I also serve as a peer reviewer for manuscripts across computational biology, neuroscience, and AI-driven biomedical research. I have completed multiple invited reviews and remain open to future review requests at **b.mahasweta24@gmail.com**.
+
+---
+
+<div class="nav-buttons">
+  <a href="/">Home</a>
+  <a href="/projects/">Projects</a>
+  <a href="/publications/">Publications</a>
+  <a href="/conferences/">Conferences</a>
+  <a href="/news/">News</a>
+  <a href="/contact/">Contact</a>
+</div>
