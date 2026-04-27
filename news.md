@@ -18,6 +18,7 @@ I am honored to be elevated to IEEE Senior Member, recognizing my professional a
 <div class="nav-buttons">
   <a href="/">Home</a>
   <a href="/about/">About</a>
+  <a href="/resume/">Resume</a>
   <a href="/projects/">Projects</a>
   <a href="/publications/">Publications</a>
   <a href="/conferences/">Conferences</a>

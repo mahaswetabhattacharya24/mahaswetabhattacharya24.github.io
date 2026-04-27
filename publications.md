@@ -87,6 +87,7 @@ Anirban Dutta, Sneha Sudhakar Karanth, **Mahasweta Bhattacharya**, Michal Liput,
 <div class="nav-buttons">
   <a href="/">Home</a>
   <a href="/about/">About</a>
+  <a href="/resume/">Resume</a>
   <a href="/projects/">Projects</a>
   <a href="/conferences/">Conferences</a>
   <a href="/news/">News</a>

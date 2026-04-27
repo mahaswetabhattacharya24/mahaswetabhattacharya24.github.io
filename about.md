@@ -38,6 +38,20 @@ I am passionate about integrating human biology with data science, and I enjoy w
 
 ---
 
+### Technical Stack
+
+**Machine Learning & AI** — Foundation Models · Multimodal Learning · LLMs · Fine-tuning (LoRA / PEFT) · Retrieval-Augmented Generation (RAG) · Agentic AI · Multi-Agent Orchestration · Graph Neural Networks · Causal Inference · Deep Reinforcement Learning · Transformers · Bayesian Inference · Uncertainty Quantification
+
+**Frameworks & Tools** — PyTorch · TensorFlow · JAX · Hugging Face Transformers · LangChain · scikit-learn · CUDA / GPU computing · Docker · Kubernetes · Slurm HPC · Weights & Biases · MLflow
+
+**Cloud & Data** — AWS (S3, EC2, Batch, SageMaker) · Snowflake · Neo4j · MySQL · FAISS / vector search · S3 data lakes · ETL pipelines
+
+**Languages** — Python · R · MATLAB · SQL · Bash · C / C++
+
+**Bioinformatics & Drug Discovery** — Bulk & single-cell RNA-seq · GWAS & multi-omics integration · Target credentialing · Indication discovery · Pharmacodynamics modeling · Biological knowledge graphs
+
+---
+
 ### Peer Review & Scientific Service
 I also serve as a peer reviewer for manuscripts across computational biology, neuroscience, and AI-driven biomedical research. I have completed multiple invited reviews and remain open to future review requests at **b.mahasweta24@gmail.com**.
 
@@ -45,6 +59,7 @@ I also serve as a peer reviewer for manuscripts across computational biology, ne
 
 <div class="nav-buttons">
   <a href="/">Home</a>
+  <a href="/resume/">Resume</a>
   <a href="/projects/">Projects</a>
   <a href="/publications/">Publications</a>
   <a href="/conferences/">Conferences</a>

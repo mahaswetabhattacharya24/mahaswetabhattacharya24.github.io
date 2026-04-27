@@ -1,0 +1,123 @@
+---
+layout: default
+title: Resume
+permalink: /resume/
+---
+
+# Resume
+
+<div style="margin: 1em 0;">
+  <a href="/assets/MahaswetaBhattacharya_Resume.pdf" target="_blank" style="display:inline-block;padding:8px 18px;border:1px solid #5db8d0;color:#5db8d0;border-radius:3px;text-decoration:none;letter-spacing:0.05em;text-transform:uppercase;font-size:12px;">⬇ Download PDF</a>
+  &nbsp;
+  <a href="/resume/MahaswetaBhattacharya_Resume.tex" target="_blank" style="display:inline-block;padding:8px 18px;border:1px solid #5db8d0;color:#5db8d0;border-radius:3px;text-decoration:none;letter-spacing:0.05em;text-transform:uppercase;font-size:12px;">LaTeX source</a>
+  &nbsp;
+  <a href="/resume/MahaswetaBhattacharya_Resume.txt" target="_blank" style="display:inline-block;padding:8px 18px;border:1px solid #5db8d0;color:#5db8d0;border-radius:3px;text-decoration:none;letter-spacing:0.05em;text-transform:uppercase;font-size:12px;">Plain text (ATS)</a>
+</div>
+
+---
+
+**AI/ML Research Scientist · Drug Discovery · Foundation Models · Agentic AI**
+
+Malden, MA  ·  [b.mahasweta24@gmail.com](mailto:b.mahasweta24@gmail.com)  ·  609-906-1583
+[LinkedIn](https://www.linkedin.com/in/mahasweta-bhattacharya/)  ·  [GitHub](https://github.com/mahaswetabhattacharya24)
+
+---
+
+## Summary
+
+AI/ML Research Scientist with 3+ years of industry experience and a PhD in Biomedical Engineering, designing foundation models, agentic LLM pipelines, and graph neural networks for biological discovery at scale. At Sanofi, built multimodal ML systems achieving **4× improvement in causal target recall**, reduced manual target review by **>50%** via multi-agent orchestration, and contributed to advancing **7 novel targets into preclinical evaluation across 30+ therapeutic programs**. Prior work includes GPU-accelerated proton dose engines (0.28s vs 4.68s Monte Carlo) and deep reinforcement learning for radiotherapy. Published across peer-reviewed journals; presenter at international AI and biomedical conferences.
+
+---
+
+## Skills
+
+- **Machine Learning & AI** — Foundation Models, Multimodal Learning, Large Language Models (LLMs), Fine-tuning (LoRA / PEFT), Retrieval-Augmented Generation (RAG), Agentic AI, Multi-Agent Orchestration, Graph Neural Networks (GNNs), Causal Inference, Deep Reinforcement Learning (RLHF / VMAT), Transformer Architectures, Representation Learning, VAEs, Bayesian Inference, Uncertainty Quantification.
+- **Frameworks & Tools** — PyTorch, TensorFlow, JAX, Hugging Face Transformers, LangChain, scikit-learn, CUDA / GPU computing, Docker, Kubernetes, Slurm HPC, Weights & Biases, MLflow.
+- **Cloud & Data** — AWS (S3, EC2, Batch, SageMaker), Snowflake, Neo4j, MySQL, FAISS / vector search, S3 data lakes, ETL pipelines, data harmonization & QC.
+- **Languages** — Python (expert), R, MATLAB, SQL, Bash / Shell, C / C++.
+- **Bioinformatics & Drug Discovery** — Bulk & single-cell RNA-seq, GWAS & multi-omics integration, target credentialing, indication discovery, pharmacodynamics modeling, biological knowledge graphs, embedding similarity search, scientific evidence synthesis.
+
+---
+
+## Experience
+
+### Senior Scientist — AI / ML Research
+**Sanofi · Cambridge, MA · Sept 2023 – Present**
+
+- Designed and deployed a production multi-agent LLM pipeline orchestrating Claude-based agents that autonomously aggregate genetics, transcriptomics, and clinical literature into structured target credentialing reports; reduced expert manual review time by **>50%** across 30+ therapeutic programs and operationalized LLM-driven reasoning in a regulated scientific workflow.
+- Architected a **multimodal foundation model** integrating GWAS embeddings, bulk and single-cell transcriptomics, and clinical-trial outcome embeddings into a unified representation space; achieved **4× improvement in causal target recall** over genetics-only baselines and established a transferable backbone for cross-disease generalization.
+- Founded a **graph neural network platform for bispecific antibody discovery** integrating protein-protein interaction graphs, synergy metrics, and LLM-guided evidence retrieval; generated **5 novel bispecific target-pair candidates** supporting pipeline expansion decisions.
+- Built a scalable **indication-discovery engine** scoring **232 immune indications in 3 weeks** and scaling to **17,000+ phenotypes** via parallelized Slurm/HPC jobs; enabled systematic whitespace identification across the immunology portfolio.
+- Developed an **explainable AI target-discovery engine** producing **90+ ranked hypotheses** and contributing to **7 novel targets** entering preclinical evaluation; integrated causal scoring, embedding similarity, and LLM-augmented evidence synthesis.
+- Co-led an automated multimodal target-credentialing platform supporting **30+ therapeutic programs** and contributing to **3 preclinical nominations**; introduced modules for causal inference, uncertainty quantification, and prospective validation.
+- Led ML-driven **transcriptomic pharmacodynamics modeling for Hidradenitis Suppurativa**, differentiating oral vs. injectable therapy mechanisms and enabling preclinical advancement of the oral candidate.
+
+### Postdoctoral Fellow — Computational AI & Medical Physics
+**Johns Hopkins University School of Medicine · Baltimore, MD · Jan 2023 – Sept 2023**
+
+- Built a **GPU-accelerated proton pencil beam dose engine** in Python / CUDA achieving **0.28s mean patient-plan computation vs. 4.68s Monte Carlo** (96% 3D-gamma agreement at 2%/2mm); released as an open-source Python package and published in *Journal of Applied Clinical Medical Physics* (2025).
+- Architected an end-to-end beam-modeling and validation pipeline from 98 pristine Bragg-peak energies, benchmarking against measurements and heterogeneous digital phantoms; produced uncertainty profiles highlighting limits in heterogeneous regions.
+- Developed a **deep reinforcement learning agent for VMAT machine-parameter optimization**; produced deliverable prostate plans in **3.3s** and reduced mean rectum dose vs. clinical plans (**17.4 vs. 21.0 Gy, p = 0.024**) on a 15-patient external cohort. Published in *Medical Physics* (2024).
+- Integrated RL-generated optimization with a commercial treatment-planning system into a hybrid automated + human-in-the-loop workflow, demonstrating production-grade feasibility.
+
+### Research Scientist (PhD) — Computational Neuroscience & AI
+**State University of New York at Buffalo · Buffalo, NY · 2017 – 2023**
+
+- Reconstructed session-wise functional connectomes from longitudinal two-photon calcium imaging during motor-skill learning; identified a biphasic rewiring trajectory and discovered stable L2/3 hub assemblies encoding movement.
+- Developed **FARCI**, an open-source MATLAB toolbox for fast connectome inference using OASIS spike deconvolution and partial correlations; outperformed state-of-the-art on NCC and NAOMi benchmarks in accuracy and scalability.
+- Demonstrated low-frequency frontal HbO–EEG coupling (0.07–0.13 Hz) as a consciousness biomarker in acute brain injury; AMICA embeddings + k-NN classifier achieved **>90% accuracy** distinguishing conscious vs. unresponsive patients and **>99% accuracy** predicting failure to recover consciousness.
+- Integrated portable fNIRS, EEG, and electric-field–informed GLMs to model cerebellar tDCS response in stroke; uncovered hemoglobin–EEG coupling signatures predictive of responders.
+- Built Monte Carlo photon-transport and bioheat models for transcranial near-infrared stimulation (810 nm); supported safety and CCO-mediated photobiomodulation as the primary mechanism — published in *Brain Sciences* (2019).
+
+---
+
+## Education
+
+- **PhD, Biomedical Engineering** · University at Buffalo, SUNY · Buffalo, NY · 2017 – 2023
+- **MS, Electrical Engineering** · University at Buffalo, SUNY · Buffalo, NY · 2015 – 2017
+- **BTech, Electronics and Communication Engineering** · West Bengal University of Technology · Kolkata, India · 2010 – 2014
+
+---
+
+## Selected Publications
+
+1. **Bhattacharya M**, Reamy C, Li H, Lee J, Hrinivich WT. *A Python package for fast GPU-based proton pencil beam dose calculation.* **Journal of Applied Clinical Medical Physics**, 2025.
+2. Hrinivich WT, **Bhattacharya M**, et al. *Clinical VMAT machine parameter optimization for localized prostate cancer using deep reinforcement learning.* **Medical Physics**, 51(6): 3972–3984, 2024.
+3. Meamardoost S, **Bhattacharya M**, et al. *Rewiring dynamics of functional connectomes during motor-skill learning.* **Data Science in Science**, 2(1): 2260431, 2023.
+4. Meamardoost S, **Bhattacharya M**, et al. *FARCI: Fast and robust connectome inference.* **Brain Sciences**, 11(12): 1556, 2021.
+5. **Bhattacharya M**, Dutta A. *Computational modeling of the photon transport, tissue heating, and cytochrome c oxidase absorption during transcranial near-infrared stimulation.* **Brain Sciences**, 9(8): 179, 2019.
+
+[Full publication list →](/publications/)
+
+---
+
+## Selected Talks & Presentations
+
+- **HubXChange: AI in Drug Discovery**, Boston, MA — Speaker / Panelist (2025)
+- **ISMB / ECCB**, Liverpool, UK — Co-author, *MultiTIE: Sanofi's Multi-Specific Target Immune Engine* (2025)
+- **FOCIS**, Boston, MA — Co-author, *HSID: Integrative Target Discovery for Hidradenitis Suppurativa* (2025)
+- **AAPM Annual Meeting**, Houston, TX — Presenter, *GPU-Based Proton Pencil Beam Dose Calculation* (2023)
+- **Society for Neuroscience Annual Meeting**, San Diego, CA — Presenter, *Stability of Motor Cortex Decoders during Learning* (2022)
+
+[Full talks list →](/conferences/)
+
+---
+
+## Honors, Service & Community
+
+- **Awards** — Winning Solution, Biomedical Knowledge Graph Hackathon, BioLabs Heidelberg & Sanofi (2025); Finalist, 3 Minute Thesis Competition (2022).
+- **Memberships** — IEEE Senior Member (elevated 2025); The AI Consortium (2025–).
+- **Peer Review** — Applied Sciences, BioMedInformatics, Engineering Applications of Artificial Intelligence (Elsevier), Heliyon, International Journal of Molecular Sciences, Mathematics, Symmetry, Genes.
+- **Mentorship & Teaching** — MIT UPOP Mentor Panelist (2024–); Hopkins Biotech Network Mentor Match (2024); Course Instructor, Biomedical Circuits and Signals & Biosignals Lab, SUNY Buffalo (2017–2019).
+
+---
+
+<div class="nav-buttons">
+  <a href="/">Home</a>
+  <a href="/about/">About</a>
+  <a href="/projects/">Projects</a>
+  <a href="/publications/">Publications</a>
+  <a href="/conferences/">Conferences</a>
+  <a href="/news/">News</a>
+  <a href="/contact/">Contact</a>
+</div>
