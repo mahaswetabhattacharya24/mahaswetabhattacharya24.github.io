@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notes on shipping agentic LLM pipelines into a regulated lab — Mahasweta Bhattacharya</title>
+<meta name="description" content="What changes when your multi-agent system has to produce evidence packets a portfolio committee will defend in writing.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/research.css">
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <a class="name" href="/research.html">Mahasweta Bhattacharya</a>
+    <nav>
+      <a href="/research.html">Research</a>
+      <a href="/publications.html">Publications</a>
+      <a href="/blog.html" class="current">Blog</a>
+      <a href="/resume/">CV</a>
+      <a href="/">Visual site</a>
+    </nav>
+  </div>
+
+  <article class="post">
+    <header>
+      <h1>Notes on shipping agentic LLM pipelines into a regulated lab</h1>
+      <div class="post-meta">
+        2026-03-12 · 10 min read
+        <span class="tag">agentic-ai</span>
+        <span class="tag">llm</span>
+        <span class="tag">pharma</span>
+      </div>
+    </header>
+
+    <p>Multi-agent LLM systems are easy to demo and hard to ship. The demo gap — that distance between a Twitter video of three GPT-4 agents debating each other and a system that an actual scientist trusts twice in a row — is, in my experience, the single most under-discussed issue in the agentic-AI literature.</p>
+
+    <p>This post is about what we learned closing that gap for a target-credentialing pipeline that now produces evidence packets for therapeutic-portfolio decisions. I won't get into Sanofi-specific architecture, but the general patterns transfer.</p>
+
+    <h2>1. The job is not "answer questions"</h2>
+
+    <p>The first mental model people have for agentic systems is a smart Q&amp;A bot: a scientist asks a question, the agents go fetch evidence, the answer comes back. That's not the job in a discovery setting.</p>
+
+    <p>The actual job is to produce a <strong>structured evidence packet</strong>: a document with predictable sections (genetics, expression, mechanism, safety, clinical precedent) where every claim is tied to a citation, every citation is verifiable, and every absence of evidence is <em>flagged as such</em> rather than papered over.</p>
+
+    <p>The implications cascade quickly:</p>
+
+    <ul>
+      <li>You don't need a free-form conversation. You need a deterministic outline filled by agents.</li>
+      <li>You need negative information to be first-class. "We searched for X and found nothing" is more valuable than a fabrication.</li>
+      <li>You need provenance to be cheap to audit. A reviewer should be able to click any sentence and see the source.</li>
+    </ul>
+
+    <p>Once we reframed the system around <em>producing a defensible artifact</em> rather than <em>answering a question</em>, almost every architectural decision got easier.</p>
+
+    <h2>2. Tools beat reasoning, almost always</h2>
+
+    <p>The most consistent thing I've seen across our agent runs is that <strong>retrieval and tool-use quality dominates reasoning quality</strong> for evidence work. A weaker model with great tool grounding outperforms a stronger model with weak grounding, on basically every metric we care about.</p>
+
+    <p>Concretely, the tools that matter for biomedical evidence work:</p>
+
+    <ul>
+      <li>Structured-database queries (Open Targets, ChEMBL, ClinVar, GTEx, DepMap) with typed responses.</li>
+      <li>Literature search with abstract-level retrieval, not just title.</li>
+      <li>Cohort-aware expression queries (single-cell atlases) with cell-state filters.</li>
+      <li>Chemistry/structural lookups (PDB, AlphaFold, PubChem).</li>
+      <li>Trial-registry queries (ClinicalTrials.gov, EU CTR) with phase/status filters.</li>
+    </ul>
+
+    <p>Building a clean, typed, deterministic API surface around each of these — and giving the agent <em>only</em> these tools — was worth more than every prompt-engineering trick I tried.</p>
+
+    <p>If you're starting a project like this today, look at <a href="https://github.com/mims-harvard/ToolUniverse">ToolUniverse</a> as a starting tool surface. It's not perfect for every use case but it's a sensible default and it saves weeks.</p>
+
+    <h2>3. Orchestration: less ambitious than you think</h2>
+
+    <p>The literature on multi-agent systems is full of beautiful diagrams of agents debating, voting, electing leaders. In production for evidence work, the orchestration that has worked is much more boring:</p>
+
+    <ol>
+      <li><strong>A planner agent</strong> that takes the target and produces a fixed outline of sub-questions.</li>
+      <li><strong>A pool of specialist agents</strong>, one per evidence type, each with its own tool subset.</li>
+      <li><strong>A reducer agent</strong> that aggregates the specialist outputs into the structured packet, flagging conflicts and gaps.</li>
+      <li><strong>A critic agent</strong> that checks every claim against its cited source and rewrites or removes unverifiable claims.</li>
+    </ol>
+
+    <p>That's it. No emergent debate, no sophisticated voting, no recursive self-improvement. Just a pipeline of focused agents with clean handoffs.</p>
+
+    <p>The two design choices that mattered most were (1) <em>deterministic specialist scoping</em> — the genetics agent literally cannot call the chemistry tools — and (2) <em>making the critic the last word</em>. The critic catches roughly 60–70% of fabrications and out-of-scope claims in our setting. Removing it would be irresponsible.</p>
+
+    <h2>4. The &gt;50% manual-review reduction is the wrong number to focus on</h2>
+
+    <p>The number we cite externally — over 50% reduction in expert manual review — is real and it's the one that justified the project. But it's not the most important number.</p>
+
+    <p>The most important number is <strong>the rate at which the system flags its own ignorance</strong>. We track this explicitly: for each evidence type in each packet, did the system produce a confident claim, a flagged-uncertain claim, or an explicit "no evidence found"? A system that always answers is dangerous. A system that knows when not to is useful.</p>
+
+    <p>This is closely related to calibration in classical ML, and the techniques transfer: hold out evaluation sets where the answer is genuinely "no evidence," and measure whether the system says so. We have a regression test that fails if any agent invents evidence for a synthetic target with no real publications.</p>
+
+    <h2>5. What the regulated context actually demands</h2>
+
+    <p>Pharma is not the most heavily regulated environment for AI — clinical decision support is — but the cultural standards inside a discovery org are still much more stringent than what most agentic-AI projects assume:</p>
+
+    <ul>
+      <li><strong>Reproducibility.</strong> Same input, same agent, same tools → same packet. We log seeds, retrieval snapshots, and tool-version pins. Non-determinism is a bug.</li>
+      <li><strong>Auditability.</strong> Every claim has a click-through to its source. No "according to the literature." Either we can show you the paper or we don't say it.</li>
+      <li><strong>Versioning.</strong> Knowledge bases change. We snapshot retrieval results so a packet generated in March still resolves to the March-time evidence in October.</li>
+      <li><strong>Failure surfaces are visible.</strong> When the system produces a low-confidence packet, that fact is on the front page, not buried in a log.</li>
+    </ul>
+
+    <p>None of these are research-novel. All of them turned out to be the difference between adoption and rejection.</p>
+
+    <h2>6. The honest open problems</h2>
+
+    <p>Three things we haven't solved well:</p>
+
+    <ul>
+      <li><strong>Cross-document synthesis.</strong> The system is good at single-paper extraction. It is mediocre at "synthesize the consensus across these 30 papers." That's the next frontier and we're still iterating.</li>
+      <li><strong>Calibration at the packet level.</strong> Per-claim confidence is OK. Per-packet "should you trust this whole document" is unsolved.</li>
+      <li><strong>Cost.</strong> A single high-quality packet runs through hundreds of tool calls and dozens of LLM calls. That's fine for portfolio decisions on multi-million-dollar programs. It's not fine for screening 10,000 candidates a day.</li>
+    </ul>
+
+    <h2>The takeaway</h2>
+
+    <p>If you're building agentic systems for any technical domain where output gets defended in writing, the lessons that have transferred are:</p>
+
+    <ol>
+      <li>Build for the artifact, not the conversation.</li>
+      <li>Tools matter more than reasoning.</li>
+      <li>Orchestration should be boring.</li>
+      <li>The most important metric is the rate of well-flagged ignorance.</li>
+      <li>Reproducibility, auditability, and versioning are the actual product.</li>
+    </ol>
+
+    <p>None of this is glamorous. All of it ships.</p>
+
+    <div class="footnote">
+      None of the above describes any specific Sanofi system or proprietary tooling. The patterns are general and apply to any team building agentic LLM systems for technical evidence work.
+    </div>
+
+    <div class="post-nav">
+      <a href="/blog/posts/2026-04-24-foundation-models-target-discovery.html">← Previous: Foundation models for target discovery</a>
+      <a href="/blog/posts/2026-02-02-rl-radiotherapy-lessons.html">Next: RL for radiotherapy →</a>
+    </div>
+  </article>
+
+  <footer>
+    <div>© 2026 Mahasweta Bhattacharya.</div>
+    <div><a href="mailto:b.mahasweta24@gmail.com">contact</a> · <a href="https://scholar.google.com/citations?hl=en&user=2x5xWV8AAAAJ" target="_blank">scholar</a></div>
+  </footer>
+
+</div>
+</body>
+</html>

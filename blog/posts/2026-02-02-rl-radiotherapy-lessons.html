@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What deep RL for radiotherapy taught me about deploying ML in the wild — Mahasweta Bhattacharya</title>
+<meta name="description" content="Reflections on the VMAT and proton-dose work — the offline/online gap, why 'deliverable' is the most important word in the room, and what it taught me about ML in drug discovery.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/research.css">
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <a class="name" href="/research.html">Mahasweta Bhattacharya</a>
+    <nav>
+      <a href="/research.html">Research</a>
+      <a href="/publications.html">Publications</a>
+      <a href="/blog.html" class="current">Blog</a>
+      <a href="/resume/">CV</a>
+      <a href="/">Visual site</a>
+    </nav>
+  </div>
+
+  <article class="post">
+    <header>
+      <h1>What deep RL for radiotherapy taught me about deploying ML in the wild</h1>
+      <div class="post-meta">
+        2026-02-02 · 8 min read
+        <span class="tag">reinforcement-learning</span>
+        <span class="tag">medical-physics</span>
+        <span class="tag">deployment</span>
+      </div>
+    </header>
+
+    <p>Before I worked on AI for drug discovery I worked on AI for radiation oncology. Two of those projects ended up in <em>Medical Physics</em> and <em>JACMP</em>: a deep-RL agent that produces deliverable VMAT plans for prostate cancer in 3.3 seconds, and a GPU-accelerated proton pencil-beam dose engine that's about 17× faster than Monte Carlo while preserving 96% gamma agreement.</p>
+
+    <p>Both projects shipped. Both projects also taught me lessons about deploying ML in physical systems that I now carry into every drug-discovery model I build. This post is about those lessons.</p>
+
+    <h2>1. "Deliverable" is the most important word in the room</h2>
+
+    <p>An RL agent that produces a beautiful treatment plan is useless if the linac can't actually deliver it. The action space has to obey machine constraints — leaf speeds, dose rates, gantry rotation rates, MLC interdigitation. A naive RL setup that treats these as soft constraints will, with probability 1, learn to exploit them.</p>
+
+    <p>We baked deliverability into the action space directly: the agent could only choose actions in the feasible region, and the reward function included a deliverability margin so the agent learned to stay <em>safely</em> inside the feasible region rather than drifting to its boundary. This is the radiotherapy version of "deploy your model, not your loss."</p>
+
+    <p>The lesson generalizes brutally to drug discovery: a target-prioritization model that produces "great" hits which fail druggability triage is a model that has learned to exploit the absence of constraints. Bake the constraints in.</p>
+
+    <h2>2. The offline/online gap is the gap that ate my prior</h2>
+
+    <p>When I started the VMAT project, I expected the hard part to be the RL itself — exploration, reward shaping, the usual. The hard part turned out to be that <strong>the offline patient cohort I trained on was systematically different from the prospective cohort I had to validate on</strong>.</p>
+
+    <p>Specifically: the training cohort had certain anatomical patterns over-represented (because of how the institution had historically segmented). The agent learned shortcuts that worked great on that cohort and degraded gracefully but visibly on the prospective set. We caught it because radiation oncology has a culture of physician sign-off, but in a fully automated setting we wouldn't have.</p>
+
+    <p>The fix was the obvious one: stratified evaluation, prospective validation on a held-out external cohort (15 patients in our case, with statistically significant rectum-dose reduction at p = 0.024), and never trusting an offline metric to predict online performance.</p>
+
+    <p>This is also why I'm now extremely suspicious of any drug-discovery benchmark that doesn't have a temporal split. Offline metrics on past data are a useful filter and a terrible verdict.</p>
+
+    <h2>3. Speed is a clinical primitive</h2>
+
+    <p>The proton pencil-beam paper is, on the surface, a software-engineering paper. Mean per-patient dose calculation went from 4.68 seconds (Monte Carlo) to 0.28 seconds (our GPU implementation), with 96% gamma agreement at 2%/2mm.</p>
+
+    <p>Why does that matter? Because at 4.68 seconds per evaluation, you can't put dose calculation inside an optimization loop. At 0.28 seconds, you can — and the entire downstream design space (RL for proton planning, online adaptive therapy, real-time motion compensation) opens up.</p>
+
+    <p>This shows up in drug discovery too. A target-discovery model that takes a week to run is a model that gets used at the start of a project and forgotten. A model that returns in 30 seconds is a model that lives inside the workflow. <strong>Latency is a feature.</strong> When in doubt, optimize the inference path.</p>
+
+    <h2>4. The right baselines are humbling</h2>
+
+    <p>The VMAT baseline we had to beat wasn't "previous RL paper." It was clinical plans produced by experienced dosimetrists who do this every day. They are extremely good. When we produced rectum-dose reductions of 17.4 vs 21.0 Gy at p = 0.024, that was not a 60% improvement over a naive baseline. It was a small, real, statistically significant improvement over a strong human baseline, and that small improvement was the entire contribution.</p>
+
+    <p>This is the right framing for ML in any domain with mature human practice. The interesting question isn't "did the model win against a no-model baseline." It's "did the model add value at the margin where humans were already good."</p>
+
+    <p>For drug discovery: the right baseline isn't "random target." It's "what an experienced biologist would have flagged from Open Targets in an afternoon." Beating <em>that</em> is the contribution.</p>
+
+    <h2>5. Open-source the tool, keep the secrets in the data</h2>
+
+    <p>The proton dose engine is shipped as an open-source Python package. The reason is not idealism — it's that the engine is the boring part. The interesting parts are the validation cohort, the calibration measurements, and the institutional clinical workflow that integrates it. Those don't open-source, and they're where the moat lives.</p>
+
+    <p>This is also true for AI in drug discovery. The model architecture is rarely the moat. The pre-training data, the negative-mining curation, the integration into a portfolio process, and the relationships with biologists who provide ground truth — those are the moat.</p>
+
+    <h2>6. Scaling cohort, not parameters</h2>
+
+    <p>Both projects produced their gains by scaling <em>data quality and cohort coverage</em> rather than scaling model size. The RL agent was a fairly standard architecture; what made it work was careful state representation and well-curated training cases. The dose engine was straightforward physics; what made it useful was rigorous validation across patient anatomies.</p>
+
+    <p>I notice the same pattern in target discovery. Most of the gains come from getting the evidence integration right, the negative samples right, the cohort coverage right. Architecture is a multiplier, not a substrate.</p>
+
+    <h2>The carryover</h2>
+
+    <p>If you're considering doing a postdoc or an industry rotation in a high-stakes ML deployment domain — radiotherapy, clinical decision support, autonomous driving, robotics — I'd recommend it. The discipline of getting things to work in the real world will permanently change how you think about offline metrics, deployment constraints, and the difference between a publication and a product.</p>
+
+    <p>Going from radiotherapy to drug discovery felt smaller than I expected. Both are domains where the cost of an exploited shortcut is patients harmed and institutions sued. The reflexes you build in one carry over to the other, and they should.</p>
+
+    <div class="post-nav">
+      <a href="/blog/posts/2026-03-12-agentic-evidence-pipelines.html">← Previous: Agentic evidence pipelines</a>
+      <a href="/blog.html">All posts →</a>
+    </div>
+  </article>
+
+  <footer>
+    <div>© 2026 Mahasweta Bhattacharya.</div>
+    <div><a href="mailto:b.mahasweta24@gmail.com">contact</a> · <a href="https://scholar.google.com/citations?hl=en&user=2x5xWV8AAAAJ" target="_blank">scholar</a></div>
+  </footer>
+
+</div>
+</body>
+</html>

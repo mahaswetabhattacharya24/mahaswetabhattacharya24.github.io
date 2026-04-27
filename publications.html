@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Publications — Mahasweta Bhattacharya</title>
+<meta name="description" content="Peer-reviewed publications by Mahasweta Bhattacharya, with BibTeX entries, PDF and journal links.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/research.css">
+
+<style>
+  .pub { margin-bottom: 22px; }
+  .pub-title {
+    font-size: 15px; font-weight: 600; color: var(--text);
+    line-height: 1.45; margin-bottom: 4px;
+  }
+  .pub-authors { font-size: 13.5px; color: var(--text-soft); margin-bottom: 4px; line-height: 1.5; }
+  .pub-authors em { font-style: normal; font-weight: 600; color: var(--text); }
+  .pub-venue { font-size: 13px; color: var(--muted); font-style: italic; margin-bottom: 8px; }
+
+  .year-label-pub {
+    font-family: var(--mono); font-size: 11.5px; color: var(--muted);
+    letter-spacing: 0.06em; padding-top: 18px; padding-bottom: 8px;
+    margin-top: 18px; border-top: 1px solid var(--line);
+  }
+
+  .pub-links { font-size: 11.5px; font-family: var(--mono); margin-bottom: 8px; }
+  .pub-links a, .pub-links button {
+    display: inline-block; margin-right: 6px; padding: 3px 8px;
+    border: 1px solid var(--line); border-radius: 3px; color: var(--accent);
+    text-decoration: none; background: transparent; cursor: pointer;
+    font-family: var(--mono); font-size: 11.5px;
+  }
+  .pub-links a:hover, .pub-links button:hover { background: var(--accent-soft); text-decoration: none; }
+
+  .bibtex {
+    display: none; margin-top: 8px; padding: 12px 14px; border-radius: 4px;
+    background: var(--bg-alt); border: 1px solid var(--line);
+    font-family: var(--mono); font-size: 12px; line-height: 1.55;
+    color: var(--text-soft); white-space: pre-wrap; word-break: break-word;
+  }
+  .bibtex.open { display: block; }
+
+  .abstract {
+    display: none; margin-top: 8px; padding: 10px 12px;
+    border-left: 2px solid var(--accent); background: var(--bg-alt);
+    font-size: 13px; color: var(--text-soft); line-height: 1.55;
+  }
+  .abstract.open { display: block; }
+</style>
+</head>
+
+<body>
+<div class="wrap wide">
+
+  <div class="topbar">
+    <a class="name" href="/research.html">Mahasweta Bhattacharya</a>
+    <nav>
+      <a href="/research.html">Research</a>
+      <a href="/publications.html" class="current">Publications</a>
+      <a href="/blog.html">Blog</a>
+      <a href="/resume/">CV</a>
+      <a href="/">Visual site</a>
+    </nav>
+  </div>
+
+  <h1 class="page">Publications</h1>
+  <div class="pagedesc">
+    Peer-reviewed journal articles, in chronological order. Click <span style="font-family:var(--mono);font-size:11.5px;border:1px solid var(--line);padding:1px 5px;border-radius:3px;">bibtex</span> or
+    <span style="font-family:var(--mono);font-size:11.5px;border:1px solid var(--line);padding:1px 5px;border-radius:3px;">abstract</span> to expand.
+    See <a href="https://scholar.google.com/citations?hl=en&user=2x5xWV8AAAAJ" target="_blank">Google Scholar</a> for the most current list.
+    <em style="color:var(--muted);">* equal contribution.</em>
+  </div>
+
+  <div class="year-label-pub">2025</div>
+
+  <div class="pub">
+    <div class="pub-title">A Python Package for Fast GPU-Based Proton Pencil Beam Dose Calculation</div>
+    <div class="pub-authors"><em>Mahasweta Bhattacharya</em>, Calin Reamy, Heng Li, Junghoon Lee, William T. Hrinivich</div>
+    <div class="pub-venue">Journal of Applied Clinical Medical Physics, 2025</div>
+    <div class="pub-links">
+      <a href="https://aapm.onlinelibrary.wiley.com/doi/full/10.1002/acm2.70093" target="_blank">journal</a>
+      <button onclick="toggle('abs-2025-1')">abstract</button>
+      <button onclick="toggle('bib-2025-1')">bibtex</button>
+    </div>
+    <div id="abs-2025-1" class="abstract">
+      Open-source Python/CUDA package for double-Gaussian proton pencil-beam dose calculation. Achieves mean per-patient runtime of 0.28s vs. 4.68s for Monte Carlo, with 96% 3D-gamma agreement at the 2%/2mm criterion across a clinical proton-therapy validation cohort.
+    </div>
+    <div id="bib-2025-1" class="bibtex">@article{bhattacharya2025proton,
+  author  = {Bhattacharya, Mahasweta and Reamy, Calin and Li, Heng and Lee, Junghoon and Hrinivich, William T.},
+  title   = {A Python Package for Fast {GPU}-Based Proton Pencil Beam Dose Calculation},
+  journal = {Journal of Applied Clinical Medical Physics},
+  year    = {2025},
+  doi     = {10.1002/acm2.70093}
+}</div>
+  </div>
+
+  <div class="year-label-pub">2024</div>
+
+  <div class="pub">
+    <div class="pub-title">Clinical VMAT Machine Parameter Optimization for Localized Prostate Cancer Using Deep Reinforcement Learning</div>
+    <div class="pub-authors">William T. Hrinivich, <em>Mahasweta Bhattacharya</em>, Lina Mekki, Todd McNutt, Xun Jia, Heng Li, Daniel Y. Song, Junghoon Lee</div>
+    <div class="pub-venue">Medical Physics 51(6), 3972–3984, 2024</div>
+    <div class="pub-links">
+      <a href="https://aapm.onlinelibrary.wiley.com/doi/full/10.1002/mp.17100" target="_blank">journal</a>
+      <button onclick="toggle('abs-2024-1')">abstract</button>
+      <button onclick="toggle('bib-2024-1')">bibtex</button>
+    </div>
+    <div id="abs-2024-1" class="abstract">
+      Deep reinforcement learning agent for direct optimization of VMAT machine parameters for prostate cancer. Produces deliverable plans in 3.3s with statistically significant rectum-dose reduction vs. clinical plans (17.4 vs. 21.0 Gy mean, p = 0.024) on a 15-patient external cohort.
+    </div>
+    <div id="bib-2024-1" class="bibtex">@article{hrinivich2024vmat,
+  author  = {Hrinivich, William T. and Bhattacharya, Mahasweta and Mekki, Lina and McNutt, Todd and Jia, Xun and Li, Heng and Song, Daniel Y. and Lee, Junghoon},
+  title   = {Clinical {VMAT} Machine Parameter Optimization for Localized Prostate Cancer Using Deep Reinforcement Learning},
+  journal = {Medical Physics},
+  volume  = {51},
+  number  = {6},
+  pages   = {3972--3984},
+  year    = {2024},
+  doi     = {10.1002/mp.17100}
+}</div>
+  </div>
+
+  <div class="year-label-pub">2023</div>
+
+  <div class="pub">
+    <div class="pub-title">Rewiring Dynamics of Functional Connectomes during Motor-Skill Learning</div>
+    <div class="pub-authors">Saber Meamardoost, <em>Mahasweta Bhattacharya</em>, Eun Jung Hwang, Takaki Komiyama, Claudia Mewes, Linbing Wang, Ying Zhang, Rudiyanto Gunawan</div>
+    <div class="pub-venue">Data Science in Science 2(1), 2260431, 2023</div>
+    <div class="pub-links">
+      <a href="https://www.tandfonline.com/doi/full/10.1080/26941899.2023.2260431" target="_blank">journal</a>
+      <button onclick="toggle('bib-2023-1')">bibtex</button>
+    </div>
+    <div id="bib-2023-1" class="bibtex">@article{meamardoost2023rewiring,
+  author  = {Meamardoost, Saber and Bhattacharya, Mahasweta and Hwang, Eun Jung and Komiyama, Takaki and Mewes, Claudia and Wang, Linbing and Zhang, Ying and Gunawan, Rudiyanto},
+  title   = {Rewiring Dynamics of Functional Connectomes during Motor-Skill Learning},
+  journal = {Data Science in Science},
+  volume  = {2},
+  number  = {1},
+  pages   = {2260431},
+  year    = {2023}
+}</div>
+  </div>
+
+  <div class="year-label-pub">2021</div>
+
+  <div class="pub">
+    <div class="pub-title">FARCI: Fast and Robust Connectome Inference</div>
+    <div class="pub-authors">Saber Meamardoost, <em>Mahasweta Bhattacharya</em>, Eun Jung Hwang, Takaki Komiyama, Claudia Mewes, Linbing Wang, Ying Zhang, Rudiyanto Gunawan</div>
+    <div class="pub-venue">Brain Sciences 11(12), 1556, 2021</div>
+    <div class="pub-links">
+      <a href="https://www.mdpi.com/2076-3425/11/12/1556" target="_blank">journal</a>
+      <a href="https://github.com/CABSEL/FARCI" target="_blank">code</a>
+      <button onclick="toggle('abs-2021-1')">abstract</button>
+      <button onclick="toggle('bib-2021-1')">bibtex</button>
+    </div>
+    <div id="abs-2021-1" class="abstract">
+      MATLAB toolbox for fast functional connectome inference from two-photon calcium imaging using OASIS spike deconvolution and partial-correlation networks. Outperforms state-of-the-art methods on both NCC and NAOMi simulation benchmarks.
+    </div>
+    <div id="bib-2021-1" class="bibtex">@article{meamardoost2021farci,
+  author  = {Meamardoost, Saber and Bhattacharya, Mahasweta and Hwang, Eun Jung and Komiyama, Takaki and Mewes, Claudia and Wang, Linbing and Zhang, Ying and Gunawan, Rudiyanto},
+  title   = {{FARCI}: Fast and Robust Connectome Inference},
+  journal = {Brain Sciences},
+  volume  = {11},
+  number  = {12},
+  pages   = {1556},
+  year    = {2021},
+  doi     = {10.3390/brainsci11121556}
+}</div>
+  </div>
+
+  <div class="pub">
+    <div class="pub-title">Resting-State NIRS–EEG in Unresponsive Patients with Acute Brain Injury</div>
+    <div class="pub-authors">Marwan H. Othman, <em>Mahasweta Bhattacharya</em>, Kirsten Møller, Søren Kjeldsen, Johannes Grand, Jesper Kjaergaard, Anirban Dutta, Daniel Kondziella</div>
+    <div class="pub-venue">Neurocritical Care 34(1), 31–44, 2021</div>
+    <div class="pub-links">
+      <a href="https://link.springer.com/article/10.1007/s12028-020-00971-x" target="_blank">journal</a>
+      <button onclick="toggle('bib-2021-2')">bibtex</button>
+    </div>
+    <div id="bib-2021-2" class="bibtex">@article{othman2021resting,
+  author  = {Othman, Marwan H. and Bhattacharya, Mahasweta and M{\o}ller, Kirsten and Kjeldsen, S{\o}ren and Grand, Johannes and Kjaergaard, Jesper and Dutta, Anirban and Kondziella, Daniel},
+  title   = {Resting-State {NIRS}--{EEG} in Unresponsive Patients with Acute Brain Injury},
+  journal = {Neurocritical Care},
+  volume  = {34},
+  number  = {1},
+  pages   = {31--44},
+  year    = {2021},
+  doi     = {10.1007/s12028-020-00971-x}
+}</div>
+  </div>
+
+  <div class="pub">
+    <div class="pub-title">Feasibility of Combining fNIRS and EEG to Identify Chronic Stroke Responders to Cerebellar tDCS</div>
+    <div class="pub-authors">Zeynab Rezaee, Shashi Ranjan, Dhaval Solanki, <em>Mahasweta Bhattacharya</em>, M. V. Padma Srivastava, Uttama Lahiri, Anirban Dutta</div>
+    <div class="pub-venue">The Cerebellum 20(6), 853–871, 2021</div>
+    <div class="pub-links">
+      <a href="https://link.springer.com/article/10.1007/s12311-021-01249-4" target="_blank">journal</a>
+      <button onclick="toggle('bib-2021-3')">bibtex</button>
+    </div>
+    <div id="bib-2021-3" class="bibtex">@article{rezaee2021feasibility,
+  author  = {Rezaee, Zeynab and Ranjan, Shashi and Solanki, Dhaval and Bhattacharya, Mahasweta and Srivastava, M. V. Padma and Lahiri, Uttama and Dutta, Anirban},
+  title   = {Feasibility of Combining {fNIRS} and {EEG} to Identify Chronic Stroke Responders to Cerebellar {tDCS}},
+  journal = {The Cerebellum},
+  volume  = {20},
+  number  = {6},
+  pages   = {853--871},
+  year    = {2021},
+  doi     = {10.1007/s12311-021-01249-4}
+}</div>
+  </div>
+
+  <div class="year-label-pub">2020</div>
+
+  <div class="pub">
+    <div class="pub-title">A Proof of Concept 'Phase Zero' Study of Neurodevelopment Using Brain Organoid Models with Vis/Near-Infrared Spectroscopy and Electrophysiology</div>
+    <div class="pub-authors">Anirban Dutta, Sneha Sudhakar Karanth, <em>Mahasweta Bhattacharya</em>, Michal Liput, Justyna Augustyniak, Mancheung Cheung, Ewa K. Stachowiak, Michal K. Stachowiak</div>
+    <div class="pub-venue">Scientific Reports 10, 20987, 2020</div>
+    <div class="pub-links">
+      <a href="https://www.nature.com/articles/s41598-020-77929-8" target="_blank">journal</a>
+      <button onclick="toggle('bib-2020-1')">bibtex</button>
+    </div>
+    <div id="bib-2020-1" class="bibtex">@article{dutta2020proof,
+  author  = {Dutta, Anirban and Karanth, Sneha Sudhakar and Bhattacharya, Mahasweta and Liput, Michal and Augustyniak, Justyna and Cheung, Mancheung and Stachowiak, Ewa K. and Stachowiak, Michal K.},
+  title   = {A Proof of Concept `Phase Zero' Study of Neurodevelopment Using Brain Organoid Models with {Vis}/Near-Infrared Spectroscopy and Electrophysiology},
+  journal = {Scientific Reports},
+  volume  = {10},
+  pages   = {20987},
+  year    = {2020},
+  doi     = {10.1038/s41598-020-77929-8}
+}</div>
+  </div>
+
+  <div class="year-label-pub">2019</div>
+
+  <div class="pub">
+    <div class="pub-title">Computational Modeling of the Photon Transport, Tissue Heating, and Cytochrome C Oxidase Absorption during Transcranial Near-Infrared Stimulation</div>
+    <div class="pub-authors"><em>Mahasweta Bhattacharya</em>, Anirban Dutta</div>
+    <div class="pub-venue">Brain Sciences 9(8), 179, 2019</div>
+    <div class="pub-links">
+      <a href="https://www.mdpi.com/2076-3425/9/8/179" target="_blank">journal</a>
+      <button onclick="toggle('abs-2019-1')">abstract</button>
+      <button onclick="toggle('bib-2019-1')">bibtex</button>
+    </div>
+    <div id="abs-2019-1" class="abstract">
+      Multilayer Monte Carlo + bioheat finite-element simulation of transcranial near-infrared stimulation in human head models. Quantifies photon-fluence, tissue temperature rise, and cytochrome-c-oxidase absorption — providing a biophysical basis for safe parameter selection in photobiomodulation.
+    </div>
+    <div id="bib-2019-1" class="bibtex">@article{bhattacharya2019computational,
+  author  = {Bhattacharya, Mahasweta and Dutta, Anirban},
+  title   = {Computational Modeling of the Photon Transport, Tissue Heating, and Cytochrome {C} Oxidase Absorption during Transcranial Near-Infrared Stimulation},
+  journal = {Brain Sciences},
+  volume  = {9},
+  number  = {8},
+  pages   = {179},
+  year    = {2019},
+  doi     = {10.3390/brainsci9080179}
+}</div>
+  </div>
+
+  <footer>
+    <div>© 2026 Mahasweta Bhattacharya.</div>
+    <div>Last updated April 2026.</div>
+  </footer>
+
+</div>
+
+<script>
+  function toggle(id) { document.getElementById(id).classList.toggle('open'); }
+</script>
+</body>
+</html>

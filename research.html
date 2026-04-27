@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mahasweta Bhattacharya — Research</title>
+<meta name="description" content="Mahasweta Bhattacharya — AI/ML Research Scientist working on foundation models, agentic LLMs, and graph neural networks for therapeutic discovery.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/research.css">
+
+<style>
+  /* Page-specific overrides for research home only */
+  .hero { display: grid; grid-template-columns: 1fr 140px; gap: 28px; align-items: start; margin-bottom: 48px; }
+  .hero-text h1 {
+    font-family: var(--serif); font-size: 30px; font-weight: 600;
+    letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 4px;
+  }
+  .hero-text .sub { color: var(--muted); font-size: 14px; margin-bottom: 18px; }
+  .hero-text p { font-size: 15.5px; color: var(--text-soft); margin-bottom: 12px; }
+  .hero-img {
+    width: 140px; height: 140px; border-radius: 50%; overflow: hidden;
+    background: var(--bg-alt); border: 1px solid var(--line);
+  }
+  .hero-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .hero-links {
+    margin-top: 16px; font-size: 13.5px; color: var(--muted);
+    display: flex; flex-wrap: wrap; gap: 14px;
+  }
+  .hero-links a { color: var(--accent); }
+
+  .themes p { font-size: 14.5px; color: var(--text-soft); margin-bottom: 10px; }
+  .themes p strong { color: var(--text); font-weight: 600; }
+
+  .pub { margin-bottom: 18px; padding-bottom: 16px; border-bottom: 1px dashed var(--line); }
+  .pub:last-child { border-bottom: none; }
+  .pub-title { font-size: 14.5px; font-weight: 600; color: var(--text); line-height: 1.45; margin-bottom: 4px; }
+  .pub-authors { font-size: 13.5px; color: var(--text-soft); margin-bottom: 4px; }
+  .pub-authors em { font-style: normal; font-weight: 600; color: var(--text); }
+  .pub-venue { font-size: 13px; color: var(--muted); font-style: italic; margin-bottom: 6px; }
+  .pub-links { font-size: 12px; font-family: var(--mono); }
+  .pub-links a {
+    margin-right: 10px; padding: 2px 6px; border: 1px solid var(--line);
+    border-radius: 3px; color: var(--accent); text-decoration: none; transition: background 0.15s;
+  }
+  .pub-links a:hover { background: var(--accent-soft); text-decoration: none; }
+  .year-label-inline {
+    font-family: var(--mono); font-size: 11.5px; color: var(--muted);
+    letter-spacing: 0.05em; margin-top: 22px; margin-bottom: 10px;
+  }
+
+  .talk { margin-bottom: 12px; font-size: 14px; color: var(--text-soft); }
+  .talk .talk-title { font-weight: 500; color: var(--text); }
+  .talk .talk-meta { color: var(--muted); font-size: 13px; }
+
+  .work { margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px dashed var(--line); }
+  .work:last-child { border-bottom: none; }
+  .work h3 { font-size: 14.5px; font-weight: 600; margin-bottom: 4px; color: var(--text); }
+  .work p { font-size: 13.5px; color: var(--text-soft); }
+  .work .tags { margin-top: 4px; font-family: var(--mono); font-size: 11.5px; color: var(--muted); }
+
+  .news-item {
+    display: grid; grid-template-columns: 90px 1fr; gap: 14px;
+    margin-bottom: 8px; font-size: 13.5px;
+  }
+  .news-item .date { font-family: var(--mono); color: var(--muted); font-size: 12px; padding-top: 2px; }
+  .news-item .what { color: var(--text-soft); }
+  .news-item .what strong { color: var(--text); font-weight: 600; }
+
+  @media (max-width: 600px) {
+    .hero { grid-template-columns: 1fr; gap: 18px; }
+    .hero-img { width: 110px; height: 110px; }
+    .hero-text h1 { font-size: 26px; }
+    .news-item { grid-template-columns: 80px 1fr; }
+  }
+</style>
+</head>
+
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <a class="name" href="/research.html">Mahasweta Bhattacharya</a>
+    <nav>
+      <a href="/research.html" class="current">Research</a>
+      <a href="/publications.html">Publications</a>
+      <a href="/blog.html">Blog</a>
+      <a href="/resume/">CV</a>
+      <a href="/">Visual site</a>
+    </nav>
+  </div>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Mahasweta Bhattacharya</h1>
+      <div class="sub">Senior Scientist · Sanofi · Cambridge, MA</div>
+      <p>I build AI systems for biological discovery — multimodal foundation models, agentic LLM pipelines, and graph neural networks that turn heterogeneous biomedical data into actionable therapeutic hypotheses.</p>
+      <p>Before Sanofi I was a postdoctoral fellow at Johns Hopkins (Radiation Oncology), and I completed my PhD in Biomedical Engineering at the University at Buffalo, working on neural signal processing, functional connectomics, and brain–computer interfaces.</p>
+      <div class="hero-links">
+        <a href="mailto:b.mahasweta24@gmail.com">email</a>
+        <a href="https://scholar.google.com/citations?hl=en&user=2x5xWV8AAAAJ" target="_blank">scholar</a>
+        <a href="https://github.com/mahaswetabhattacharya24" target="_blank">github</a>
+        <a href="https://www.linkedin.com/in/mahasweta-bhattacharya/" target="_blank">linkedin</a>
+        <a href="/assets/MahaswetaBhattacharya_Resume.pdf" target="_blank">cv (pdf)</a>
+      </div>
+    </div>
+    <div class="hero-img">
+      <img src="/assets/picture.jpg" alt="Mahasweta Bhattacharya">
+    </div>
+  </section>
+
+  <section id="research">
+    <h2 class="section">Research</h2>
+    <div class="themes">
+      <p><strong>Multimodal foundation models for therapeutic discovery.</strong> Unified representations across human genetics, bulk &amp; single-cell transcriptomics, and clinical-trial outcomes; achieved a 4× improvement in causal target recall over genetics-only baselines and a transferable backbone for cross-disease generalization.</p>
+      <p><strong>Agentic LLM pipelines for scientific evidence synthesis.</strong> Production multi-agent systems orchestrating Claude-based agents to autonomously aggregate genetics, transcriptomics, and clinical literature into structured target reports. Reduced expert manual review by &gt;50% across 30+ therapeutic programs.</p>
+      <p><strong>Graph neural networks for combinatorial drug design.</strong> GNN platform integrating protein–protein interaction graphs, synergy metrics, and LLM-guided evidence retrieval; generated 5 novel bispecific target-pair candidates for immunology indications.</p>
+      <p><strong>Deep reinforcement learning &amp; GPU-accelerated physics.</strong> RL agent for VMAT machine-parameter optimization (deliverable plans in 3.3s, statistically significant rectum-dose reduction, <em>p=0.024</em>); GPU-accelerated proton pencil-beam dose engine (0.28s vs 4.68s Monte Carlo, 96% 3D-gamma agreement).</p>
+      <p><strong>Computational neuroscience.</strong> Functional connectome inference from longitudinal two-photon calcium imaging; multimodal NIRS–EEG biomarkers of consciousness; computational modeling of transcranial photobiomodulation.</p>
+    </div>
+  </section>
+
+  <section id="work">
+    <h2 class="section">Selected Work</h2>
+
+    <div class="work">
+      <h3>Multimodal Foundation Model for Target Discovery</h3>
+      <p>Unified embeddings across genetics (GWAS), transcriptomics (bulk &amp; single-cell), and clinical-trial outcomes. 4× causal-target recall vs. genetics-only baselines.</p>
+      <div class="tags">[Sanofi · 2024–] · foundation models · multimodal · causal inference</div>
+    </div>
+
+    <div class="work">
+      <h3>Agentic Target-Credentialing Pipeline</h3>
+      <p>Production multi-agent LLM system orchestrating Claude-based agents for autonomous biomedical evidence aggregation. &gt;50% reduction in expert manual review across 30+ therapeutic programs.</p>
+      <div class="tags">[Sanofi · 2024–] · agentic AI · RAG · multi-agent</div>
+    </div>
+
+    <div class="work">
+      <h3>GNN Platform for Bispecific Antibody Discovery</h3>
+      <p>Graph neural network integrating protein–protein interaction graphs, synergy metrics, and LLM-guided evidence retrieval. Generated 5 novel bispecific target-pair candidates.</p>
+      <div class="tags">[Sanofi · 2024–] · graph neural networks · drug design</div>
+    </div>
+
+    <div class="work">
+      <h3>Indication Discovery Engine</h3>
+      <p>Computational repurposing pipeline scoring 232 immune indications in 3 weeks; scaled to 17,000+ phenotypes via parallelized HPC.</p>
+      <div class="tags">[Sanofi · 2024] · scaling · HPC · drug repurposing</div>
+    </div>
+
+    <div class="work">
+      <h3>GPU-Accelerated Proton Dose Engine</h3>
+      <p>Python/CUDA double-Gaussian proton pencil-beam dose engine. 0.28s mean patient-plan vs. 4.68s Monte Carlo; 96% 3D-gamma agreement (2%/2mm). Open-source Python package; <em>JACMP 2025</em>.</p>
+      <div class="tags">[Johns Hopkins · 2023] · GPU · CUDA · open source</div>
+    </div>
+
+    <div class="work">
+      <h3>Deep RL for VMAT Optimization</h3>
+      <p>DRL agent producing deliverable prostate VMAT plans in 3.3s; reduced mean rectum dose vs. clinical plans (17.4 vs. 21.0 Gy, <em>p=0.024</em>) on 15-patient external cohort. <em>Medical Physics 2024</em>.</p>
+      <div class="tags">[Johns Hopkins · 2023] · reinforcement learning · radiotherapy</div>
+    </div>
+
+    <div class="work">
+      <h3>FARCI — Fast and Robust Connectome Inference</h3>
+      <p>MATLAB toolbox for fast functional-connectome inference from calcium imaging using OASIS spike deconvolution and partial correlations. Outperformed state-of-the-art on NCC and NAOMi benchmarks.</p>
+      <div class="tags">[SUNY Buffalo · 2021] · neuroscience · open source</div>
+    </div>
+  </section>
+
+  <section id="publications">
+    <h2 class="section">Publications</h2>
+    <p style="font-size:13.5px; color:var(--muted); margin-bottom:18px;">
+      See the <a href="/publications.html">full list with BibTeX</a> or <a href="https://scholar.google.com/citations?hl=en&user=2x5xWV8AAAAJ" target="_blank">Google Scholar</a>. * indicates equal contribution.
+    </p>
+
+    <div class="year-label-inline">2025</div>
+
+    <div class="pub">
+      <div class="pub-title">A Python Package for Fast GPU-Based Proton Pencil Beam Dose Calculation</div>
+      <div class="pub-authors"><em>Mahasweta Bhattacharya</em>, Calin Reamy, Heng Li, Junghoon Lee, William T. Hrinivich</div>
+      <div class="pub-venue">Journal of Applied Clinical Medical Physics, 2025</div>
+      <div class="pub-links">
+        <a href="https://aapm.onlinelibrary.wiley.com/doi/full/10.1002/acm2.70093" target="_blank">journal</a>
+      </div>
+    </div>
+
+    <div class="year-label-inline">2024</div>
+
+    <div class="pub">
+      <div class="pub-title">Clinical VMAT Machine Parameter Optimization for Localized Prostate Cancer Using Deep Reinforcement Learning</div>
+      <div class="pub-authors">William T. Hrinivich, <em>Mahasweta Bhattacharya</em>, Lina Mekki, Todd McNutt, Xun Jia, Heng Li, Daniel Y. Song, Junghoon Lee</div>
+      <div class="pub-venue">Medical Physics 51(6), 3972–3984, 2024</div>
+      <div class="pub-links">
+        <a href="https://aapm.onlinelibrary.wiley.com/doi/full/10.1002/mp.17100" target="_blank">journal</a>
+      </div>
+    </div>
+
+    <div class="year-label-inline">2023</div>
+
+    <div class="pub">
+      <div class="pub-title">Rewiring Dynamics of Functional Connectomes during Motor-Skill Learning</div>
+      <div class="pub-authors">Saber Meamardoost, <em>Mahasweta Bhattacharya</em>, Eun Jung Hwang, Takaki Komiyama, Claudia Mewes, Linbing Wang, Ying Zhang, Rudiyanto Gunawan</div>
+      <div class="pub-venue">Data Science in Science 2(1), 2260431, 2023</div>
+      <div class="pub-links">
+        <a href="https://www.tandfonline.com/doi/full/10.1080/26941899.2023.2260431" target="_blank">journal</a>
+      </div>
+    </div>
+
+    <div class="year-label-inline">2021</div>
+
+    <div class="pub">
+      <div class="pub-title">FARCI: Fast and Robust Connectome Inference</div>
+      <div class="pub-authors">Saber Meamardoost, <em>Mahasweta Bhattacharya</em>, Eun Jung Hwang, Takaki Komiyama, Claudia Mewes, Linbing Wang, Ying Zhang, Rudiyanto Gunawan</div>
+      <div class="pub-venue">Brain Sciences 11(12), 1556, 2021</div>
+      <div class="pub-links">
+        <a href="https://www.mdpi.com/2076-3425/11/12/1556" target="_blank">journal</a>
+        <a href="https://github.com/CABSEL/FARCI" target="_blank">code</a>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="pub-title">Resting-State NIRS–EEG in Unresponsive Patients with Acute Brain Injury</div>
+      <div class="pub-authors">Marwan H. Othman, <em>Mahasweta Bhattacharya</em>, Kirsten Møller, Søren Kjeldsen, Johannes Grand, Jesper Kjaergaard, Anirban Dutta, Daniel Kondziella</div>
+      <div class="pub-venue">Neurocritical Care 34(1), 31–44, 2021</div>
+      <div class="pub-links">
+        <a href="https://link.springer.com/article/10.1007/s12028-020-00971-x" target="_blank">journal</a>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="pub-title">Feasibility of Combining fNIRS and EEG to Identify Chronic Stroke Responders to Cerebellar tDCS</div>
+      <div class="pub-authors">Zeynab Rezaee, Shashi Ranjan, Dhaval Solanki, <em>Mahasweta Bhattacharya</em>, M. V. Padma Srivastava, Uttama Lahiri, Anirban Dutta</div>
+      <div class="pub-venue">The Cerebellum 20(6), 853–871, 2021</div>
+      <div class="pub-links">
+        <a href="https://link.springer.com/article/10.1007/s12311-021-01249-4" target="_blank">journal</a>
+      </div>
+    </div>
+
+    <div class="year-label-inline">2020</div>
+
+    <div class="pub">
+      <div class="pub-title">A Proof of Concept 'Phase Zero' Study of Neurodevelopment Using Brain Organoid Models with Vis/Near-Infrared Spectroscopy and Electrophysiology</div>
+      <div class="pub-authors">Anirban Dutta, Sneha Sudhakar Karanth, <em>Mahasweta Bhattacharya</em>, Michal Liput, Justyna Augustyniak, Mancheung Cheung, Ewa K. Stachowiak, Michal K. Stachowiak</div>
+      <div class="pub-venue">Scientific Reports 10, 20987, 2020</div>
+      <div class="pub-links">
+        <a href="https://www.nature.com/articles/s41598-020-77929-8" target="_blank">journal</a>
+      </div>
+    </div>
+
+    <div class="year-label-inline">2019</div>
+
+    <div class="pub">
+      <div class="pub-title">Computational Modeling of the Photon Transport, Tissue Heating, and Cytochrome C Oxidase Absorption during Transcranial Near-Infrared Stimulation</div>
+      <div class="pub-authors"><em>Mahasweta Bhattacharya</em>, Anirban Dutta</div>
+      <div class="pub-venue">Brain Sciences 9(8), 179, 2019</div>
+      <div class="pub-links">
+        <a href="https://www.mdpi.com/2076-3425/9/8/179" target="_blank">journal</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="talks">
+    <h2 class="section">Talks &amp; Presentations</h2>
+
+    <div class="talk"><span class="talk-title">AI in Drug Discovery</span> &middot; <span class="talk-meta">HubXChange, Boston, MA &middot; 2025 &middot; Speaker / Panelist</span></div>
+    <div class="talk"><span class="talk-title">MultiTIE: Sanofi's Multi-Specific Target Immune Engine</span> &middot; <span class="talk-meta">ISMB / ECCB, Liverpool, UK &middot; 2025 &middot; Co-author</span></div>
+    <div class="talk"><span class="talk-title">HSID: Integrative Target Discovery for Hidradenitis Suppurativa</span> &middot; <span class="talk-meta">FOCIS, Boston, MA &middot; 2025 &middot; Co-author</span></div>
+    <div class="talk"><span class="talk-title">Meta-analysis of GWAS of Asthma Exacerbation</span> &middot; <span class="talk-meta">FOCIS, Boston, MA &middot; 2025 &middot; Co-author</span></div>
+    <div class="talk"><span class="talk-title">Fast GPU-Based Proton Pencil Beam Dose Calculation</span> &middot; <span class="talk-meta">AAPM Annual Meeting, Houston, TX &middot; 2023 &middot; Presenter</span></div>
+    <div class="talk"><span class="talk-title">Stability of Motor Cortex Decoders during Learning</span> &middot; <span class="talk-meta">Society for Neuroscience Annual Meeting, San Diego, CA &middot; 2022 &middot; Presenter</span></div>
+    <div class="talk"><span class="talk-title">Does Learning Alter Neural Decoders of Motor Cortex?</span> &middot; <span class="talk-meta">SfN Global Connectome (Virtual) &middot; 2021 &middot; Presenter</span></div>
+    <div class="talk"><span class="talk-title">Computational Modeling of Neural Activation during Transcranial Photothermal Stimulation</span> &middot; <span class="talk-meta">Society for Neuroscience Annual Meeting, Chicago, IL &middot; 2019 &middot; Presenter</span></div>
+  </section>
+
+  <section id="news">
+    <h2 class="section">News</h2>
+    <div class="news-item"><div class="date">Dec 2025</div><div class="what"><strong>Elevated to IEEE Senior Member</strong> — recognizing professional accomplishments and contributions to engineering and technology.</div></div>
+    <div class="news-item"><div class="date">2025</div><div class="what"><strong>Winning Solution</strong> — Biomedical Knowledge Graph Hackathon, BioLabs Heidelberg &amp; Sanofi.</div></div>
+    <div class="news-item"><div class="date">2025</div><div class="what">New paper accepted in <em>Journal of Applied Clinical Medical Physics</em>: "A Python Package for Fast GPU-Based Proton Pencil Beam Dose Calculation."</div></div>
+    <div class="news-item"><div class="date">2025</div><div class="what">Joined <strong>The AI Consortium</strong>; continuing as mentor for MIT UPOP and the Hopkins Biotech Network.</div></div>
+    <div class="news-item"><div class="date">2024</div><div class="what">New paper in <em>Medical Physics</em>: "Clinical VMAT Machine Parameter Optimization Using Deep Reinforcement Learning."</div></div>
+    <div class="news-item"><div class="date">Sep 2023</div><div class="what">Joined <strong>Sanofi</strong> as Senior Scientist, Cambridge, MA.</div></div>
+  </section>
+
+  <section id="service">
+    <h2 class="section">Service &amp; Community</h2>
+    <p style="font-size:14px; color:var(--text-soft); margin-bottom:10px;"><strong>Peer review.</strong> Applied Sciences (MDPI), BioMedInformatics (MDPI), Engineering Applications of Artificial Intelligence (Elsevier), Heliyon (Elsevier), International Journal of Molecular Sciences (MDPI), Mathematics (MDPI), Symmetry (MDPI), Genes (MDPI).</p>
+    <p style="font-size:14px; color:var(--text-soft); margin-bottom:10px;"><strong>Mentorship.</strong> MIT UPOP Mentor Panelist (2024–); Hopkins Biotech Network Mentor Match (2024).</p>
+    <p style="font-size:14px; color:var(--text-soft); margin-bottom:10px;"><strong>Memberships.</strong> IEEE Senior Member (2025); The AI Consortium (2025–).</p>
+    <p style="font-size:14px; color:var(--text-soft);"><strong>Teaching.</strong> Course Instructor, Biomedical Circuits and Signals (Fall 2017–2019); Biomedical Engineering Biosignals Lab (Spring 2018–2019), SUNY Buffalo.</p>
+  </section>
+
+  <footer>
+    <div>© 2026 Mahasweta Bhattacharya. Built with vanilla HTML.</div>
+    <div>Last updated April 2026.</div>
+  </footer>
+
+</div>
+</body>
+</html>

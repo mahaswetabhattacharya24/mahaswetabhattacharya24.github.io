@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why foundation models for target discovery aren't just bigger GNNs — Mahasweta Bhattacharya</title>
+<meta name="description" content="On the design choices behind multimodal target-discovery models, why genetics-only baselines plateau, and what a 4× recall improvement actually buys you.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/research.css">
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <a class="name" href="/research.html">Mahasweta Bhattacharya</a>
+    <nav>
+      <a href="/research.html">Research</a>
+      <a href="/publications.html">Publications</a>
+      <a href="/blog.html" class="current">Blog</a>
+      <a href="/resume/">CV</a>
+      <a href="/">Visual site</a>
+    </nav>
+  </div>
+
+  <article class="post">
+    <header>
+      <h1>Why foundation models for target discovery aren't just bigger GNNs</h1>
+      <div class="post-meta">
+        2026-04-24 · 9 min read
+        <span class="tag">foundation-models</span>
+        <span class="tag">multimodal</span>
+        <span class="tag">target-discovery</span>
+      </div>
+    </header>
+
+    <p>Most of the "AI for drug discovery" conversation in the last two years has been about <em>scale</em> — bigger models, more data, larger graphs. That's true and it matters, but it sidesteps the harder question: <strong>what should the model actually represent?</strong> A 100M-parameter graph neural network trained on a single modality doesn't get more useful than a 10M-parameter one. It just costs more to fine-tune.</p>
+
+    <p>This post is a tour through the design choices we made building a multimodal foundation model for therapeutic target discovery, why we abandoned a few ideas that looked good on paper, and what the gains we did get were actually telling us.</p>
+
+    <h2>1. The problem genetics-only baselines actually solve</h2>
+
+    <p>The strong baseline in industrial target discovery isn't deep learning — it's "do GWAS, prioritize by effect size and tissue specificity, hand off to a biologist." That's roughly the Open Targets Genetics workflow, and it works well enough that any new method has to clear a meaningful bar.</p>
+
+    <p>What this baseline does well: it's interpretable, well-calibrated for common variants, and aligns naturally with how regulators and biologists already reason. What it does badly: it's almost blind to genes whose causal evidence shows up in <em>expression dynamics</em> (e.g. cell-state-specific upregulation in disease), or in <em>response-to-perturbation</em> data (e.g. signatures from clinical trials of related compounds). Those evidence types are huge in oncology and immunology, where the genetics is messy.</p>
+
+    <p>So the meaningful question becomes: can we build a representation in which a GWAS hit, a single-cell expression signature, and a clinical-trial response signal are all <em>nearby</em> in latent space when they describe the same underlying biology — and <em>far apart</em> when they don't?</p>
+
+    <h2>2. Why a single-modality GNN couldn't do this</h2>
+
+    <p>Our first instinct was a knowledge-graph GNN over Open Targets / Reactome / STRING with multi-relational edges. It worked, but plateaued in a way that felt structural rather than tunable:</p>
+
+    <ul>
+      <li><strong>Sparse evidence types dominated the gradient.</strong> Genetic associations are well-curated and dense; clinical-trial evidence is sparse and noisy. The GNN learned to over-rely on the dense signal, exactly the failure mode we were trying to fix.</li>
+      <li><strong>The graph was lossy on continuous evidence.</strong> An expression signature is a high-dimensional continuous object. Reducing it to "this gene is connected to this disease" via a binary edge throws away most of what makes it predictive.</li>
+      <li><strong>It had no notion of <em>cell state</em>.</strong> A target that matters in CD8+ T cells in the tumor microenvironment is not the same as a target that matters in resting peripheral blood. The graph didn't know that.</li>
+    </ul>
+
+    <h2>3. What we did instead: modality-specific encoders, shared latent space</h2>
+
+    <p>The architecture we landed on is closer in spirit to CLIP than to a GNN:</p>
+
+    <ul>
+      <li>A <strong>genetics encoder</strong> consuming variant-level features (effect size, MAF, posterior probability of causality, tissue-eQTL evidence).</li>
+      <li>A <strong>transcriptomics encoder</strong> consuming bulk- and single-cell expression vectors, with cell-state aware attention.</li>
+      <li>A <strong>clinical-evidence encoder</strong> consuming structured representations of clinical-trial outcomes for related compounds.</li>
+      <li>A shared latent space trained with contrastive objectives that pull together evidence pointing at the same target-disease pair.</li>
+    </ul>
+
+    <p>This is not architecturally exotic. The interesting work is in the <em>contrastive design</em> — what counts as a positive pair, how to negative-mine without leaking, and how to handle the long tail of diseases where you only have one or two evidence types. We spent more time on these questions than on the architecture itself.</p>
+
+    <h2>4. What 4× recall actually means</h2>
+
+    <p>The headline result is a 4× improvement in causal-target recall over the genetics-only baseline at fixed precision. That number is easy to over-read, so it's worth being honest about what it isn't:</p>
+
+    <ul>
+      <li>It is <em>not</em> a claim that the model knows what's causal. It's a claim that the model recovers a held-out set of literature-defined causal targets at a higher rate than the baseline.</li>
+      <li>It is <em>not</em> uniform across diseases. The gains concentrate in indications where genetics is weak — auto-immune, neurodegeneration, some oncology. In Mendelian disease the genetics baseline is already excellent and the lift is small.</li>
+      <li>It is <em>not</em> a substitute for biology. The artifact we ship to biologists is still a ranked list with per-modality evidence shown side by side. The model exists to widen the funnel, not to make decisions.</li>
+    </ul>
+
+    <p>What it <em>does</em> mean is that for a typical project we surface 3–4× more credible causal candidates per unit of biologist time. That's the metric that matters in a portfolio context, and it's what made the work fundable past the prototype stage.</p>
+
+    <h2>5. What didn't work</h2>
+
+    <p>A short, honest list:</p>
+
+    <ul>
+      <li><strong>Joint training from scratch on all modalities.</strong> The optimization is hostile. We pretrain each encoder on its modality first, then align in a second phase. This is conventional wisdom in multimodal pretraining and it's conventional for a reason.</li>
+      <li><strong>Naively scaling the contrastive batch.</strong> Bigger batches are useful in CLIP because images and captions are i.i.d. Targets and diseases are not. Many of our "negative" pairs were actually unlabeled positives. We had to introduce a curated negative-mining pipeline — boring infrastructure that drove most of the gain.</li>
+      <li><strong>Treating the model as a one-shot oracle.</strong> The biologists who use the system want to see <em>which evidence drove the score</em>, not just the score. We added per-modality contribution attribution and it changed adoption overnight.</li>
+    </ul>
+
+    <h2>6. What I'd build next</h2>
+
+    <p>If I were starting again today, I'd put more energy into three things:</p>
+
+    <ol>
+      <li><strong>Scaling the perturbation-response modality.</strong> Public CRISPR-screen and chemical-perturbation data is exploding (DepMap, JUMP-CP, Tahoe-100M). It's the modality with the highest information-per-parameter for target prioritization.</li>
+      <li><strong>An agentic layer that can ask follow-up questions.</strong> The model produces a ranked list. The actual question is "what would change my mind about #1?" That's an LLM-shaped question, not a foundation-model-shaped one, and the integration is non-trivial. (More on this in the <a href="/blog/posts/2026-03-12-agentic-evidence-pipelines.html">next post</a>.)</li>
+      <li><strong>Calibrated uncertainty.</strong> The model's calibration is mediocre. Bayesian deep learning is unfashionable but right.</li>
+    </ol>
+
+    <h2>The broader bet</h2>
+
+    <p>The bet behind multimodal target-discovery models is not that they're cleverer than biologists. It's that biology is <em>hard to read</em> precisely because the evidence is fragmented across incompatible representations, and that the most leveraged thing ML can do is build a representation in which the fragments line up.</p>
+
+    <p>That's a humbler frame than "AI cures disease," but it's the one that has actually moved targets into preclinical evaluation in our hands. Worth being honest about.</p>
+
+    <div class="footnote">
+      Caveat: most of the specifics here are general-pattern descriptions, not disclosures of any internal Sanofi system. Results referenced are from our published work; numbers in projects discussed under NDA are paraphrased ranges.
+    </div>
+
+    <div class="post-nav">
+      <a href="/blog.html">← All posts</a>
+      <a href="/blog/posts/2026-03-12-agentic-evidence-pipelines.html">Next: Agentic evidence pipelines →</a>
+    </div>
+  </article>
+
+  <footer>
+    <div>© 2026 Mahasweta Bhattacharya.</div>
+    <div><a href="mailto:b.mahasweta24@gmail.com">contact</a> · <a href="https://scholar.google.com/citations?hl=en&user=2x5xWV8AAAAJ" target="_blank">scholar</a></div>
+  </footer>
+
+</div>
+</body>
+</html>
