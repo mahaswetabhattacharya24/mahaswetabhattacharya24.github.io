@@ -13,10 +13,6 @@ Live at https://mahaswetabhattacharya24.github.io
 | Blog | `/blog.html` | Long-form technical writing on ML for biology, agentic systems, deployment |
 | CV / Resume | `/resume/` | Resume in HTML, PDF, LaTeX source, plain-text (ATS) |
 
-The two views are deliberate: the visual site is the "front door" for general visitors,
-the research site (`/research.html`) is the format DeepMind / AWS Health / NVIDIA BioNemo
-hiring committees expect — clean, text-first, publication-led, with a blog for written
-technical signal.
 
 ## Files
 
